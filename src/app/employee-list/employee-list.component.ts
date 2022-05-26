@@ -12,7 +12,7 @@ import {EmployeeService} from '../employee.service';
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
   errorMessage: string;
-
+  report: number
   constructor(private employeeService: EmployeeService) {
   }
 
@@ -29,4 +29,14 @@ export class EmployeeListComponent implements OnInit {
     console.error(e);
     return this.errorMessage = e.message || 'Unable to retrieve employees';
   }
+
+  deleteReport(emp: Employee) {
+    console.log("direct reports:", emp.directReports)
+    this.employeeService
+    .put(emp)
+    .subscribe(
+      () => (console.log("direct"))
+    )
+  }
+
 }

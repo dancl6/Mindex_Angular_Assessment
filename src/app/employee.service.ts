@@ -36,11 +36,15 @@ export class EmployeeService {
       .pipe(catchError(this.handleError));
   }
 
+  deleteRep(emp: Employee): Observable<Employee> {
+  return this.http.delete<Employee>(this.url)
+  }
+
   private post(emp: Employee): Observable<Employee> {
     return this.http.post<Employee>(this.url, emp);
   }
 
-  private put(emp: Employee): Observable<Employee> {
+  put(emp: Employee): Observable<Employee> {
     return this.http.put<Employee>(`${this.url}/${emp.id}`, emp);
   }
 

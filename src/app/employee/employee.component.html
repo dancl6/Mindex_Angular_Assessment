@@ -1,5 +1,6 @@
 <mat-card class="employee">
   <mat-card-header>
+    <mat-card-title>{{employee.number_reports}}</mat-card-title>
     <mat-card-title>{{employee.lastName}}, {{employee.firstName}}</mat-card-title>
     <mat-card-subtitle>{{employee.id}}</mat-card-subtitle>
   </mat-card-header>
@@ -8,5 +9,14 @@
       <dt>Job Title</dt>
       <dd>{{employee.position}}</dd>
     </dl>
+    <div>
+      <div >Direct Reports:</div>
+      <div *ngFor="let emp of employee.directReports" class="dotted">{{emp}}
+
+        <button (onDelete)="onDelete(emp)">🗑️</button>
+        <button >✏️</button>
+
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
